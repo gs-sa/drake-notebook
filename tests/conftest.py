@@ -42,7 +42,7 @@ def docker_client() -> docker.DockerClient:
 @pytest.fixture(scope="session")
 def image_name() -> str:
     """Image name to test"""
-    return "my-project/drake-notebook"
+    return "gesheng1998/drake-notebook"
 
 
 class TrackedContainer:
