@@ -5,8 +5,13 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Add a "USER root" statement followed by RUN statements to install system packages using apt-get,
 # change file permissions, etc.
 USER root
-
+# ADD . /home/jovyan/work
 RUN python3 -m pip install drake
 # If you do switch to root, always be sure to add a "USER $NB_USER" command at the end of the
 # file to ensure the image runs as a unprivileged user by default.
+COPY --chown=${NB_UID}:${NB_GID} install_xvfb /opt/
+COPY --chown=${NB_UID}:${NB_GID} xvfb /opt/
+
+RUN chmod +x /opt/install_xvfb && /opt/install_xvfb
+
 USER ${NB_UID}
