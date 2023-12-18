@@ -7,6 +7,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 USER root
 # ADD . /home/jovyan/work
 RUN python3 -m pip install drake
+
+ENV DISPLAY=:99
 # If you do switch to root, always be sure to add a "USER $NB_USER" command at the end of the
 # file to ensure the image runs as a unprivileged user by default.
 COPY --chown=${NB_UID}:${NB_GID} install_xvfb /opt/
