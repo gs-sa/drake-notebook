@@ -15,5 +15,5 @@ COPY --chown=${NB_UID}:${NB_GID} install_xvfb /opt/
 COPY --chown=${NB_UID}:${NB_GID} xvfb /opt/
 
 RUN chmod +x /opt/install_xvfb && /opt/install_xvfb
-CMD Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+CMD service xvfb start
 USER ${NB_UID}
